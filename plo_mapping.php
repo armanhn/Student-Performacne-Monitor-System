@@ -29,17 +29,18 @@
 		</select>
 		<br>
 		<h3>FOR PLO 1 </h3>
-		<p><input type = "checkbox" name= "plo[]" value= "CLO1"/> CLO1</p>
-		<p><input type = "checkbox" name= "plo[]" value= "CLO2"/> CLO2</p>
-		<p><input type = "checkbox" name= "plo[]" value= "CLO3"/> CLO3</p>
-		<p><input type = "checkbox" name= "plo[]" value= "CLO4"/> CLO4</p>
-		<p><input type = "checkbox" name= "plo[]" value= "CLO5"/> CLO5</p>
-		<p><input type = "checkbox" name= "plo[]" value= "CLO6"/> CLO6</p>
+		<p><input type = "checkbox" name= "plo1[]" value= "CLO1"/> CLO1</p>
+		<p><input type = "checkbox" name= "plo1[]" value= "CLO2"/> CLO2</p>
+		<p><input type = "checkbox" name= "plo1[]" value= "CLO3"/> CLO3</p>
+		<p><input type = "checkbox" name= "plo1[]" value= "CLO4"/> CLO4</p>
+		<p><input type = "checkbox" name= "plo1[]" value= "CLO5"/> CLO5</p>
+		<p><input type = "checkbox" name= "plo1[]" value= "CLO6"/> CLO6</p>
 		<input type = "submit" name= "submit" value= "submit"/>
 	
 	<?php
 
 		if(isset($_POST['submit'])){
+			/*
 			if(!empty($_POST["plo"]))
 			{
 				echo "<h3>You have selected the following CLO</h3>";
@@ -50,11 +51,13 @@
 			else{
 				echo "please select at least one clo";
 			}
-			$plo = $_POST['plo'];
-			$b = implode(',',$plo);
+			*/
+
+			$plo1 = $_POST['plo1'];
+			$a = implode(',',$plo1);
 			$section_name = $_POST['section_name']; 
 
-			$sql = "INSERT INTO plo_table(section_name,plo1) VALUES ('$section_name','$b')";
+			$sql = "INSERT INTO plo_table(section_name,plo1) VALUES ('$section_name','$a')";
 
 			if(mysqli_query($conn,$sql))
 				{
