@@ -19,17 +19,19 @@
 			if($num_row1 > 0 ) {
 					$data = mysqli_fetch_array($result1);
 					$_SESSION["id"] = $data["id"];
-					header('Location: welcome_faculty.php');
+					header('Location: welcome_faculty.php?id='.$id);
 					}
 
 			if($num_row2 > 0) {
 		
 					$data = mysqli_fetch_array($result2);
 					$_SESSION["id"] = $data["id"];
-					header('Location: welcome_student.php');
+					header('Location: welcome_student.php?id=').$id;
 			}
 			
 		}
+		
+
 
 ?>
 
@@ -112,7 +114,7 @@
        <img src="iublogo.png" class="iublogo">
      </enter>
 
-      <form class="my_form"action="index.php" method="post">
+      <form class="my_form" action="index.php"  method="post">
        	<label>User ID:</label><br>
          <input type="text" class="inputevalues" name="id" id="id" placeholder="Enter Username"><br>
          <label>Password</label><br>
@@ -120,11 +122,10 @@
 	
 
           <input type="submit" class="login_btn" name="login" id="login" value="login"><br>
-           
 
-  
-  
        </form>
+
+
 
 	   
 	   
