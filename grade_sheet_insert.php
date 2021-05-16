@@ -60,6 +60,35 @@
 		<td><input type = "text" name = "assignment" ></td>
 		<br>
 		</tr>
+		<tr>
+		<th>Enter CLO1</th>
+		<td><input type = "text" name = "CLO1" ></td>
+		</tr>
+		<br>
+		<tr>
+		<th>Enter CLO2</th>
+		<td><input type = "text" name = "CLO2" ></td>
+		</tr>
+		<br>
+		<tr>
+		<th>Enter CLO3</th>
+		<td><input type = "text" name = "CLO3" ></td>
+		</tr>
+		<br>
+		<tr>
+		<th>Enter CLO4</th>
+		<td><input type = "text" name = "CLO4" ></td>
+		</tr>
+		<br>
+		<tr>
+		<th>Enter CLO5</th>
+		<td><input type = "text" name = "CLO5" ></td>
+		</tr>
+		<br>
+		<tr>
+		<th>Enter CLO6</th>
+		<td><input type = "text" name = "CLO6" ></td>
+		</tr>
 		<br>
 		<td></td>
 		<td><input type = "submit" name = "submit" ></td>
@@ -77,8 +106,121 @@
 				$attendance = $_POST['attendance'];
 				$project = $_POST['project'];
 				$assignment = $_POST['assignment'];
+				$CLO1 = $_POST['CLO1'];
+				$CLO2 = $_POST['CLO2'];
+				$CLO3 = $_POST['CLO3'];
+				$CLO4 = $_POST['CLO4'];
+				$CLO5 = $_POST['CLO5'];
+				$CLO6 = $_POST['CLO6'];
+				
+				if(!empty($quiz))
+				{	
+					$quiz = "'".$quiz."'";
+				}
+				else{
+					$quiz = 'NULL';
+				}
 
-				$sql= "INSERT INTO grade_sheet (section_name,id,quiz,mid,final,attendance,project,assignment) VALUES ('$section_name','$id','$quiz','$mid','$final','$attendance','$project','$assignment')";
+				// TO CHECK if the value is inserted or not, if not entered then INSERT NULL
+
+				if(!empty($mid))
+				{	
+					$mid = "'".$mid."'";
+				}
+				else{
+					$mid = 'NULL';
+				}
+
+				// TO CHECK if the value is inserted or not, if not entered then INSERT NULL
+
+
+				if(!empty($final))
+				{	
+					$final = "'".$final."'";
+				}
+				else{
+					$final = 'NULL';
+				}
+				
+				// TO CHECK if the value is inserted or not, if not entered then INSERT NULL
+
+
+				if(!empty($attendance))
+				{	
+					$attendance = "'".$attendance."'";
+				}
+				else{
+					$attendance = 'NULL';
+				}
+
+				if(!empty($project))
+				{	
+					$project = "'".$project."'";
+				}
+				else{
+					$project = 'NULL';
+				}
+
+				if(!empty($assignment))
+				{	
+					$assignment = "'".$assignment."'";
+				}
+				else{
+					$assignment = 'NULL';
+				}
+				
+				if(!empty($CLO1))
+				{	
+					$CLO1 = "'".$CLO1."'";
+				}
+				else{
+					$CLO1 = 'NULL';
+				}
+
+				if(!empty($CLO2))
+				{	
+					$CLO2 = "'".$CLO2."'";
+				}
+				else{
+					$CLO2 = 'NULL';
+				}
+
+				if(!empty($CLO3))
+				{	
+					$CLO3 = "'".$CLO3."'";
+				}
+				else{
+					$CLO3 = 'NULL';
+				}
+
+				if(!empty($CLO4))
+				{	
+					$CLO4 = "'".$CLO4."'";
+				}
+				else{
+					$CLO4 = 'NULL';
+				}
+
+				if(!empty($CLO5))
+				{	
+					$CLO5 = "'".$CLO5."'";
+				}
+				else{
+					$CLO5 = 'NULL';
+				}
+
+				if(!empty($CLO6))
+				{	
+					$CLO6 = "'".$CLO6."'";
+				}
+				else{
+					$CLO6 = 'NULL';
+				}
+
+				$sql= "INSERT INTO grade_sheet (section_name,serial_id,id,quiz,mid,final,attendance,project,assignment,CLO1,CLO2,CLO3,CLO4,CLO5,CLO6) VALUES ('$section_name',(SELECT serial_id FROM plo_table WHERE section_name = '$section_name'),'$id',$quiz,$mid,$final,$attendance,$project,$assignment,$CLO1,$CLO2,$CLO3,$CLO4,$CLO5, $CLO6 )" ;
+
+				// REMOVED '' from VALUES to handle NULL entry;
+
 				if(mysqli_query($conn,$sql))
 				{
 					echo"done";
