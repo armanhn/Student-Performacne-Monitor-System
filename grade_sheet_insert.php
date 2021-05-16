@@ -18,7 +18,7 @@
 
 				while($rows =  mysqli_fetch_assoc($result))
 				{
-					$section_name = $rows['section_name'];
+					$section_name = $rows['section_name']; 
 					echo "<option value= '$section_name'>$section_name</option>"; 
 				}
 
@@ -45,7 +45,6 @@
 		<td><input type = "text" name = "final" ></td>
 		</tr>
 		<br>
-		<tr>
 		<th>Enter Attendance Marks</th>
 		<td><input type = "text" name = "attendance" ></td>
 		</tr>
@@ -60,6 +59,12 @@
 		<td><input type = "text" name = "assignment" ></td>
 		<br>
 		</tr>
+		<tr>
+		<th>Enter Grade</th>
+		<td><input type = "text" name = "grade" ></td>
+		</tr>
+		<tr>
+		<br>
 		<tr>
 		<th>Enter CLO1</th>
 		<td><input type = "text" name = "CLO1" ></td>
@@ -106,6 +111,7 @@
 				$attendance = $_POST['attendance'];
 				$project = $_POST['project'];
 				$assignment = $_POST['assignment'];
+				$grade = $_POST['grade'];
 				$CLO1 = $_POST['CLO1'];
 				$CLO2 = $_POST['CLO2'];
 				$CLO3 = $_POST['CLO3'];
@@ -113,6 +119,12 @@
 				$CLO5 = $_POST['CLO5'];
 				$CLO6 = $_POST['CLO6'];
 				
+				$marks = array($quiz,$mid,$final,$attendance,$project,$assignment);
+
+				$total_marks = array_sum($marks);
+				
+				
+
 				if(!empty($quiz))
 				{	
 					$quiz = "'".$quiz."'";
@@ -217,7 +229,8 @@
 					$CLO6 = 'NULL';
 				}
 
-				$sql= "INSERT INTO grade_sheet (section_name,serial_id,id,quiz,mid,final,attendance,project,assignment,CLO1,CLO2,CLO3,CLO4,CLO5,CLO6) VALUES ('$section_name',(SELECT serial_id FROM plo_table WHERE section_name = '$section_name'),'$id',$quiz,$mid,$final,$attendance,$project,$assignment,$CLO1,$CLO2,$CLO3,$CLO4,$CLO5, $CLO6 )" ;
+
+				$sql= "INSERT INTO grade_sheet (section_name,serial_id,id,quiz,mid,final,attendance,project,assignment,total_marks,grade,CLO1,CLO2,CLO3,CLO4,CLO5,CLO6) VALUES ('$section_name',(SELECT serial_id FROM plo_table WHERE section_name = '$section_name'),'$id',$quiz,$mid,$final,$attendance,$project,$assignment,'$total_marks','$grade',$CLO1,$CLO2,$CLO3,$CLO4,$CLO5, $CLO6 )" ;
 
 				// REMOVED '' from VALUES to handle NULL entry;
 
