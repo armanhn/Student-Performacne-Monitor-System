@@ -1,136 +1,67 @@
 <?php
-	include "connection.php"
-?>
-
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Dropdown list</title>
-</head>
-<body>
-	<form action = "" method = "post">
-
-		<tr>
-		<th>Enter Program ID</th>
-		<td><input type = "text" name = "id" ></td>
-		</tr>
-		<br>
-		<td></td>
-		<td><input type="submit" name="calculate" value="add"></td>
-		</tr>
-		<?php
-				echo"hello";
-				switch ($_POST['calculate']) {
-      // if calculate => add
-      	case 'add':
-      			echo"HELLO";
-            	echo $_POST['id'];
-            	break;
-
-      // if calculate => subtract
-      case 'submit':
-      		if($_POST['action'] == 'submit')
-			{
-				$section_name = $_POST['section_name'];
-				$id = $_POST['id'];
-				$quiz = $_POST['quiz'];
-				$mid = $_POST['mid'];
-				$final = $_POST['final'];
-				$attendance = $_POST['attendance'];
-				$project = $_POST['project'];
-				$assignment = $_POST['assignment'];
-
-				//$sql= "INSERT INTO grade_sheet (section_name,id,quiz,mid,final,attendance,project,assignment) VALUES ('$section_name','$id','$quiz','$mid','$final','$attendance','$project','$assignment')";
-				if(mysqli_query($conn,$sql))
-				{
-					echo"done";
-				}
-				else
-				{
-					echo"ERROR";
-				}
-			}
-            break;
-
-
-}
-
-			?> 
-		<br>
-		<th>Enter Course ID</th>
-		<select name = "section_name" >
-
-		</select>
-		<br>
-		<tr>
-		<th>Enter Student ID</th>
-		<td><input type = "text" name = "id" ></td>
-		</tr>
-		<br>
-		<tr>
-		<th>Enter Quiz Marks</th>
-		<td><input type = "text" name = "quiz" ></td>
-		</tr>
-		<br>
-		<tr>
-		<th>Enter Mid Marks</th>
-		<td><input type = "text" name = "mid" ></td>
-		</tr>
-		<br>
-		<tr>
-		<th>Enter Final Marks</th>
-		<td><input type = "text" name = "final" ></td>
-		</tr>
-		<br>
-		<tr>
-		<th>Enter Attendance Marks</th>
-		<td><input type = "text" name = "attendance" ></td>
-		</tr>
-		<br>
-		<tr>
-		<th>Enter Project Marks</th>
-		<td><input type = "text" name = "project" ></td>
-		</tr>
-		<br>
-		<tr>
-		<th>Enter Assignment Marks</th>
-		<td><input type = "text" name = "assignment" ></td>
-		<br>
-		</tr>
-		<br>
-		<td></td>
+	include "connection.php";
 	
-		<td><input type="submit" name="action" value="submit"  ></td>
-		</tr>
+	 $sql =	"SELECT DISTINCT * FROM plo_table"; 
+	 $result = mysqli_query($conn,$sql);
+		 
+		 if(mysqli_num_rows($result)>0)
+		 {
+		 	
+		 	$add = 0;
+		 	$count= 0;
+		 	$i=0;
+		 	while($row = mysqli_fetch_assoc($result))
+		 	{
+		 		if(!empty($row['plo1']))
+		 		{
+		 			$count++;
+		 		}
 
-		<?php
-			/*
-			if($_POST['action'] == 'submit')
-			{
-				$section_name = $_POST['section_name'];
-				$id = $_POST['id'];
-				$quiz = $_POST['quiz'];
-				$mid = $_POST['mid'];
-				$final = $_POST['final'];
-				$attendance = $_POST['attendance'];
-				$project = $_POST['project'];
-				$assignment = $_POST['assignment'];
+		 		$a = array($row['plo1']);
+		 		$b= $row['serial_id'];
+		 		$i++;
+		 	}
+		 	
+		 	//echo $count;
+		 	echo "<br>";
+		 	}
 
-				//$sql= "INSERT INTO grade_sheet (section_name,id,quiz,mid,final,attendance,project,assignment) VALUES ('$section_name','$id','$quiz','$mid','$final','$attendance','$project','$assignment')";
-				if(mysqli_query($conn,$sql))
-				{
-					echo"done";
-				}
-				else
-				{
-					echo"ERROR";
-				}
-			}
-			*/
-		?>
+		 	while($count > 0)
+		 		{
+		 			
+		 			 $i = 0;
+		 			 $ploValue = $a;
+		 			 echo $ploValue;
+		 			 echo "<br>";
+		 			 $serialValue = $b[$i];
+					
+		 			 for($i=0 ; $i<6; $i++)
+		 			 {
+		 			 		$CLO = "CLO".$i; 
+		 			 		$sql2 = "SELECT SUM(CASE WHEN $CLO IS NOT NULL THEN 1 ELSE 0 END) AS ccount
+        					FROM grade_sheet AS g, plo_table AS p
+        					WHERE g.serial_id = p.serial_id AND g.$CLO = 'Y' AND p.plo1 = '$ploValue' ";
 
-</form>
+				            $result2 = mysqli_query($conn,$sql2);
+    
+						    $row2 = mysqli_fetch_assoc($result2);
 
-</body>
+						    $value = $row2['ccount'];
+						    echo $value;
+						    echo "<br>";
+						    $add += $value;
 
-</html>
+
+		 			 }
+		 
+
+						    $i++;
+						    $count--;
+
+		 		}
+		 		echo"TOTAL = ";
+		 		echo $add;
+		 		
+
+
+?>

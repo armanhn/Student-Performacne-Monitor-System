@@ -37,15 +37,13 @@
 
 <?php
 		
-		$sql = "SELECT SUM ( COUNT (clo1) AND COUNT (clo2) AND COUNT (clo3) AND COUNT (clo4) AND COUNT (clo5) AND COUNT (clo6))
+		$sql = "SELECT SUM ( COUNT (CLO1) AND COUNT (CLO2) AND COUNT (CLO3) AND COUNT (CLO4) AND COUNT (CLO5) AND COUNT (CLO6))
 			from grade_sheet table";
 
 			$result = mysqli_query($conn,$sql);
 			$values = mysqli_fetch_assoc($result);
 
-			$values = mysqli_fetch_assoc($result);
 
-			echo $values;
 		/*
 		if(isset($_POST['submit']))
 		{

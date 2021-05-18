@@ -18,7 +18,7 @@
 	<table>
 	<?php
 
-	 $sql =	"SELECT * FROM student"; 
+	 $sql =	"SELECT DISTINCT * FROM student"; 
 	 $result = mysqli_query($conn,$sql);
 		 
 		 if(mysqli_num_rows($result)>0)
