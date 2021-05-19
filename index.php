@@ -15,6 +15,10 @@
 			$sql2 = "SELECT  * FROM student WHERE id = '$id' and password = '$password'";
 			$result2 = mysqli_query($conn,$sql2);
 			$num_row2 = mysqli_num_rows($result2);
+
+			$sql3 = "SELECT  * FROM dept WHERE dept_head_id = '$id' and password = '$password'";
+			$result3 = mysqli_query($conn,$sql3);
+			$num_row3 = mysqli_num_rows($result3);
 			
 			if($num_row1 > 0 ) {
 					$data = mysqli_fetch_array($result1);
@@ -26,7 +30,14 @@
 		
 					$data = mysqli_fetch_array($result2);
 					$_SESSION["id"] = $data["id"];
-					header('Location: welcome_student.php?id=').$id;
+					header('Location: welcome_student.php?id='.$id);
+			}
+
+			if($num_row3 > 0) {
+		
+					$data = mysqli_fetch_array($result3);
+					$_SESSION["id"] = $data["id"];
+					header('Location: welcome_dept_head.php?id='.$id);
 			}
 			
 		}

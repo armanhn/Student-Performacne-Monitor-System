@@ -50,19 +50,16 @@ for($i = 1; $i<=6 ;$i++)
 
 
 
-
- 
-// Some data and the labels
 $data   = array($value,$value2);
 $labels = array("Achieved Plo\n(%.1f%%)",
-                "Total PLO\n(%.1f%%)");
+                "Unattained PLO\n(%.1f%%)");
  
 // Create the Pie Graph.
 $graph = new PieGraph(800,800);
 $graph->SetShadow();
  
 // Set A title for the plot
-$graph->title->Set('String labels with values');
+$graph->title->Set('PlO Achieved Percentage');
 $graph->title->SetFont(FF_VERDANA,FS_BOLD,12);
 $graph->title->SetColor('black');
  
