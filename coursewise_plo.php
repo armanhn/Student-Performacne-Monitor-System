@@ -8,7 +8,7 @@
 	<title>Dropdown list</title>
 </head>
 <body>
-	<form action = "" method = "post">
+	<form action = "coursewise_plo_chart.php" method = "post">
 		<th>Enter Course ID</th>
 		<select name = "section_name" >
 			<?php
@@ -27,40 +27,5 @@
 		<br>
 		<td><input type = "submit" name = "submit" ></td>
 
-
-		<?php
-
-			if(isset($_POST['submit']))
-			{
-				$section_name = $_POST['section_name'];
-			
-				$add= 0;
-				
-				for($i = 1; $i<=6 ;$i++)
-				{
-				$CLO = "CLO".$i;
-				$sql = "SELECT SUM(CASE WHEN $CLO IS NOT NULL THEN 1 ELSE 0 END) AS ccount
-				FROM grade_sheet AS g
-				WHERE g.section_name = '$section_name' AND g.$CLO ='Y'";
-
-				$result = mysqli_query($conn,$sql);
-
-				$row = mysqli_fetch_assoc($result);
-
-				$value = $row['ccount'];
-
-				$add += $value;
-				}
-				echo "<br>";
-				echo "Total PLO achieved: ". $add;
-				$achieved =$add;
-
-			}
-		
-
-
-
-
-		?>
 </body>
 </html>
