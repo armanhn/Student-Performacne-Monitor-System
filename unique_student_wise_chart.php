@@ -5,9 +5,9 @@ require_once ('D:/XAMPP/htdocs/jpgraph-4.3.4/jpgraph-4.3.4/src/jpgraph.php');
 require_once ('D:/XAMPP/htdocs/jpgraph-4.3.4/jpgraph-4.3.4/src/jpgraph_bar.php');
 
 
-if(isset($_POST['submit']))
-{	
-	$section_name = $_POST['section_name'];
+
+	
+	$id = $_SESSION['id'];
 
 	$grand_total=0; // Total count of plo achieved
 	for($k=1;$k<=13;$k++) /// loop will run all the 13 plo
@@ -58,7 +58,7 @@ if(isset($_POST['submit']))
 	 			 			{
 	 			 		$sql2 = "SELECT SUM(CASE WHEN $CLO IS NOT NULL THEN 1 ELSE 0 END) AS ccount
 						FROM grade_sheet AS g, plo_table AS p
-						WHERE g.serial_id = p.serial_id AND g.section_name= '$section_name' AND g.$CLO = 'Y' AND p.$plo = '$ploValue'";
+						WHERE g.serial_id = p.serial_id AND g.id = '$id' AND g.$CLO = 'Y' AND p.$plo = '$ploValue'";
 
 			            $result2 = mysqli_query($conn,$sql2);
 
@@ -120,5 +120,5 @@ $graph->xaxis->title->SetFont(FF_FONT1,FS_BOLD);
 $graph->Stroke();
 
 
-}
+
 ?>

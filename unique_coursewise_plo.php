@@ -1,7 +1,7 @@
 <?php
-	include "connection.php"
+	include "connection.php";
 	   session_start();
-        $id = $_SESSION['id'];
+       $id = $_SESSION['id'];
 ?>
 
 <!DOCTYPE html>
@@ -15,7 +15,7 @@
 		<select name = "section_name" >
 			<?php
 
-				$sql= "SELECT section_name FROM section";
+				$sql= "SELECT section_name FROM section WHERE faculty_id = '$id' ";
 				$result = mysqli_query($conn,$sql);
 
 				while($rows =  mysqli_fetch_assoc($result))

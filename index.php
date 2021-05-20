@@ -8,6 +8,8 @@
 		 
 		  $id = mysqli_real_escape_string($conn,$_POST['id']);
 		  $password = mysqli_real_escape_string($conn,$_POST['password']); 
+		  $_SESSION['id'] = $id;
+
 			$sql1 = "SELECT  * FROM faculty WHERE id = '$id' and password = '$password'";
 			$result1 = mysqli_query($conn,$sql1);
 			$num_row1 = mysqli_num_rows($result1);
@@ -23,21 +25,21 @@
 			if($num_row1 > 0 ) {
 					$data = mysqli_fetch_array($result1);
 					$_SESSION["id"] = $data["id"];
-					header('Location: welcome_faculty.php?id='.$id);
+					header('Location: welcome_faculty.php');
 					}
 
 			if($num_row2 > 0) {
 		
 					$data = mysqli_fetch_array($result2);
 					$_SESSION["id"] = $data["id"];
-					header('Location: welcome_student.php?id='.$id);
+					header('Location: welcome_student.php');
 			}
 
 			if($num_row3 > 0) {
 		
 					$data = mysqli_fetch_array($result3);
-					$_SESSION["id"] = $data["id"];
-					header('Location: welcome_dept_head.php?id='.$id);
+					$_SESSION["id"] = $data["dept_head_id"];
+					header('Location: welcome_dept_head.php');
 			}
 			
 		}

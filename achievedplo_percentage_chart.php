@@ -2,6 +2,8 @@
 require_once ('D:/XAMPP/htdocs/jpgraph-4.3.4/jpgraph-4.3.4/src/jpgraph.php');
 require_once ('D:/XAMPP/htdocs/jpgraph-4.3.4/jpgraph-4.3.4/src/jpgraph_pie.php');
  include "connection.php";
+session_start();
+ 
 $add= 0;
 for($i = 1; $i<=6 ;$i++)
 	{
