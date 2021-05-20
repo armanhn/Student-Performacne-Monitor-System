@@ -2,7 +2,7 @@
 
 	include "connection.php";
 	session_start();
-	 $id = $_SESSION['id'];
+	// $id = $_SESSION['id'];
 ?>
 
 <!DOCTYPE html>
@@ -12,57 +12,42 @@
 </head>
 <body>
 	<form action = "" method = "post">
-	<th>Enter Course ID</th>
-	<select name = "section_name" >
-		<?php
-
-			$sql= "SELECT section_name FROM section WHERE faculty_id = '$id' ";
-			$result = mysqli_query($conn,$sql);
-
-			while($rows =  mysqli_fetch_assoc($result))
-			{
-				$section_name = $rows['section_name']; 
-				echo "<option value= '$section_name'>$section_name</option>"; 
-			}
-
-		?> 
-	</select>
-	<br>
 
 	<th>Attach Assesment Plan</th>
-	<td><input type = "file" name = "assesment_plan" ></td>
+	<td><input type = "file" name = "pdf" ></td>
 	<br>
-	<th>Attach Question Bank</th>
-	<td><input type = "file" name = "question_bank" ></td>
+
 	<br>
-	<th>Attach Grade Sheet</th>
-	<td><input type = "file" name = "grade_sheet" ></td>
-	<br>
-	<td><input type = "submit" name = "submit" required></td>
+	<td><input type = "submit" name = "submit" value="upload"></td>
 
 		<?php
 
 
-	if(isset($_POST['submit'])){
 
-		$section_name = $_POST['section_name'];
-		$assesment_plan = $_POST['assesment_plan'];
-		$question_bank = $_POST['question_bank'];
-		$grade_sheet = $_POST['grade_sheet'];
-		
-
-		$sql = "INSERT INTO student (section_name,faculty_id,assesment_plan,question_bank,grade_sheet) VALUES ('$section_name','$id','$assesment_plan','$question_bank','$grade_sheet')"; 
-
-		if(mysqli_query($conn,$sql)){
-			echo "DONE";
-		}
-		else{
-			echo"ERROR";
-		}
-	}
+        if (isset($_POST['submit'])) {
 
 
-	?>
+        if (isset($_POST['submit'])) {
+          $pdf=$_FILES['pdf']['name'];
+          $pdf_type=$_FILES['pdf']['type'];
+          $pdf_size=$_FILES['pdf']['size'];
+          $pdf_tem_loc=$_FILES['pdf']['tmp_name'];
+          $pdf_store="pdf/".$pdf;
+
+          move_uploaded_file($pdf_tem_loc,$pdf_store);
+
+          $sql="INSERT INTO assessment (assessment_plan) values('$pdf')";
+          $query=mysqli_query($conn,$sql);
+
+
+
+        }
+
+        }
+
+
+
+         ?>
 
 </body>
 </html>
