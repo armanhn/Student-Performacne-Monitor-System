@@ -112,7 +112,7 @@
 		<select name = "section_name" >
 			<?php
 
-				$sql= "SELECT section_name FROM section WHERE faculty_id = '$id' ";
+				$sql= "SELECT section_name FROM section";
 				$result = mysqli_query($conn,$sql);
                 echo "<option value= '--select--'>--select--</option>";
 				while($rows =  mysqli_fetch_assoc($result))

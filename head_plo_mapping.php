@@ -104,7 +104,7 @@
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <a class="navbar-brand" href="index.html">VYKON DASHVIEW</a>
+            <a class="navbar-brand" href="dept_head_dash.php">VYKON DASHVIEW</a>
 
             <form>
                 <button class="btn" style="border: none;
