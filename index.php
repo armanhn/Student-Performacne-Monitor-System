@@ -1,10 +1,13 @@
+
+
 <?php
 	
 	include "connection.php";
 		   
 	session_start();
-   
+  $error = NULL;
 	   if(isset ($_POST["login"]) ) { 
+      
 		 
 		  $id = mysqli_real_escape_string($conn,$_POST['id']);
 		  $password = mysqli_real_escape_string($conn,$_POST['password']); 
@@ -27,27 +30,28 @@
 					$_SESSION["id"] = $data["id"];
 					header('Location: facultydash.php');
 					}
-
 			if($num_row2 > 0) {
-		
 					$data = mysqli_fetch_array($result2);
 					$_SESSION["id"] = $data["id"];
-					header('Location: welcome_student.php');
+					header('Location: student_dash.php');
 			}
-
 			if($num_row3 > 0) {
 		
 					$data = mysqli_fetch_array($result3);
 					$_SESSION["id"] = $data["dept_head_id"];
 					header('Location: dept_head_dash.php');
 			}
-			
+      if($num_row1==0||$num_row2==0 || $num_row3==0){
+        
+       
+      $error ='ID OR PASS NOT FOUND';
+       
+      }
+    
 		}
 		
-
 ?>
-<!DOCTYPE html>
-<html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -71,9 +75,22 @@
   font-size: 50px;
   font-style: bold;
 }
-.vert {
-	font-style: bold;	
+.error {
+	
+  font-size:20px;
+  color:#ff414d;
+  margin-left:85px;
+  font-style: bold;
+  font-family:impact;
+
 }
+.vert{
+
+ color:#00587a;
+
+
+}
+
 </style>
 </head>
 <body>
@@ -93,7 +110,8 @@
               <div class="brand-wrapper">
 
 			<div class="he">V Y K O N</div>
-			<div class="vert">Independent University, Bangladesh</div>
+			<div class="vert"><b>Independent University, Bangladesh</b></div>
+
 
               </div>
               <p class="login-card-description">Sign into Vykon OBES</p>
@@ -107,12 +125,16 @@
                     <input type="password" name="password" id="password" class="form-control"class="error" placeholder="***********">
                   </div>
                   <input name="login" id="login" class="btn btn-block login-btn mb-4" type="submit" value="Login">
+                  <div class="error"><?php echo $error;?></div>
                 </form>
                 <a href="#!" class="forgot-password-link">Forgot password?</a>
-                <p class="login-card-footer-text">Don't have an account? <a href="#!" class="text-reset">Register here</a></p>
+               
+                
+                <p class="login-card-footer-text">Don't have an account? <a href="#!" class="text-reset"></a></p>
                 <nav class="login-card-footer-nav">
                   <a href="#!">A T M J M S M</a>
-                  <a href="#!"> | VYKON Database 303 SEC3 GROUP 6</a>
+                  <a href="#!"> | VYKON Database 303 SEC3 GROUP 6</a> 
+                 
                 </nav>
             </div>
           </div>
