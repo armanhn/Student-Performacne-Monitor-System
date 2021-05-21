@@ -2,6 +2,7 @@
 require_once ('D:/XAMPP/htdocs/jpgraph-4.3.4/jpgraph-4.3.4/src/jpgraph.php');
 require_once ('D:/XAMPP/htdocs/jpgraph-4.3.4/jpgraph-4.3.4/src/jpgraph_bar.php');
 	include "connection.php";
+	session_start();
 	
 	$grand_total=0; // Total count of plo achieved
 	for($k=1;$k<=13;$k++) /// loop will run all the 13 plo

@@ -1,6 +1,6 @@
 <?php
 	include "connection.php";
-	
+	session_start();
 	$grand_total=0; // Total count of plo achieved
 	for($k=1;$k<=13;$k++) /// loop will run all the 13 plo
 	{

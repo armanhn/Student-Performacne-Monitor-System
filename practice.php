@@ -1,72 +1,61 @@
+
+
 <?php
-	include "connection.php";
-	
-	 $sql =	"SELECT DISTINCT plo1 FROM plo_table"; 
-	 $result = mysqli_query($conn,$sql);
-		 
-		 if(mysqli_num_rows($result)>0)
-		 {
-		 	
-		 	
-		 	$count= 0;
-		 	$i=0;
-		 	while($row = mysqli_fetch_assoc($result))
-		 	{
 
-		 		if(!empty($row['plo1']))
-		 		{
-		 			$i;
-		 			$count++;
-		 			$value = $row['plo1'];
-		 			$a[$i] = $value;
-		 			$i++;
-		 			echo "<br>";
-				} 
-		 	}
-
-		 	echo $count;
-		 	echo "<br>";
-
-		 }
+    include "connection.php";
 
 
-				 $add = 0;
+?>
+<!DOCTYPE html>
+<html>
+<head>
+    <title>File Upload</title>
+</head>
+<body>
+ 
+<form method="post" enctype="multipart/form-data">
 
-	 			for($i=0;$i<$count;$i++)
-	 			{
-	 			 $ploValue = $a[$i];
-	 			 echo $ploValue;
-	 			 echo "<br>";
-					 
-	 			 	for($j=1 ; $j<=6; $j++)
-	 			 	{
-	 			 		
-	 			 		$CLO = "CLO".$j;
-	 			 		if($CLO == $ploValue)
-	 			 			{
-	 			 		$sql2 = "SELECT SUM(CASE WHEN $CLO IS NOT NULL THEN 1 ELSE 0 END) AS ccount
-						FROM grade_sheet AS g, plo_table AS p
-						WHERE g.serial_id = p.serial_id AND g.$CLO = 'Y' AND p.plo1 = '$ploValue'";
+    <label>File Upload</label>
+    <input type="File" name="file">
 
-			            $result2 = mysqli_query($conn,$sql2);
+    <input type="submit" name="submit">
+ 
+ 
+</form>
+ 
+</body>
+</html>
+ 
+<?php 
 
-					    $row2 = mysqli_fetch_assoc($result2);
+ 
+ 
+if (isset($_POST["submit"]))
+ {
 
-					    $value = $row2['ccount'];
-					    echo $value;
-					    echo "<br>";
-					    $add += $value;
-	 			 			}	
-
-
-
-	 				}
-	 			}
-	 			
-
-	 		echo"TOTAL = ";
-	 		echo $add;
-	 		
-
-
+     
+    #file name with a random number so that similar dont get replaced
+     $pname = rand(1000,10000)."-".$_FILES["file"]["name"];
+ 
+    #temporary file name to store file
+    $tname = $_FILES["file"]["tmp_name"];
+   
+     #upload directory path
+     $uploads_dir = '';
+    #TO move the uploaded file to specific location
+    move_uploaded_file($tname, $uploads_dir.'/'.$pname);
+ 
+    #sql query to insert into database
+    $sql = "INSERT into assessment(assessment) VALUES('$pname')";
+ 
+    if(mysqli_query($conn,$sql)){
+ 
+    echo "File Sucessfully uploaded";
+    }
+    else{
+        echo "Error";
+    }
+}
+ 
+ 
 ?>

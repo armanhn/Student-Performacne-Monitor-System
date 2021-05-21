@@ -1,6 +1,6 @@
 <?php
 	include "connection.php";
-	
+	session_start();
 	 $sql =	"SELECT DISTINCT plo1 FROM plo_table"; 
 	 $result = mysqli_query($conn,$sql);
 		 

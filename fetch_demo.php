@@ -15,7 +15,7 @@
 
 	<h3>Reading from the database</h3>
 	<div>
-	<table>
+
 	<?php
 
 	 $sql =	"SELECT DISTINCT * FROM student"; 
@@ -23,14 +23,16 @@
 		 
 		 if(mysqli_num_rows($result)>0)
 		 {
-		 	while($student = mysqli_fetch_assoc($result))
+		 	while($data = mysqli_fetch_assoc($result))
 		 		{
 		 			echo"<tr>";
-		 			echo "<td>".$student['id']. "</td>" . "<br>";
-		 			echo "<td>".$student['student_name']  ."</td>". "<br>";
-		 			echo "<td>".$student['email']."</td>"  . "<br>";
+		 			echo"<td>".$data['id']. "</td>" . "<br>";
+		 			echo"<td>".$data['student_name']  ."</td>". "<br>";
+		 			echo"<td>".$data['email']."</td>"  . "<br>";
 		 			echo"<br>";
-		 			echo"</tr>";
+		 			echo"</tr>"; 
+		 			echo"<hr>";
+
 		 		}
 		 }
 		
@@ -40,7 +42,7 @@
 		}
 
 ?>
-</table>
+
 </div>
 
 </body>
