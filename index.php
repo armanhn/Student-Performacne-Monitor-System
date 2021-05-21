@@ -132,7 +132,7 @@
          <input type="password" class="inputevalues" name="password" id="password" placeholder="Type Your Password"><br>
 	
 
-          <input type="submit" class="login_btn" name="login" id="login" value="login"><br>
+          <input type="submit" class="login_btn" name="login" id="login" value="Login"><br>
 
        </form>
 
