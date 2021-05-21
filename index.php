@@ -25,7 +25,7 @@
 			if($num_row1 > 0 ) {
 					$data = mysqli_fetch_array($result1);
 					$_SESSION["id"] = $data["id"];
-					header('Location: welcome_faculty.php');
+					header('Location: facultydash.php');
 					}
 
 			if($num_row2 > 0) {
@@ -39,144 +39,89 @@
 		
 					$data = mysqli_fetch_array($result3);
 					$_SESSION["id"] = $data["dept_head_id"];
-					header('Location: welcome_dept_head.php');
+					header('Location: dept_head_dash.php');
 			}
 			
 		}
 		
 
-
 ?>
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<!-- CSS only -->
-
-
-<!-- JavaScript Bundle with Popper -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-
-	<title>Login page</title>
-	<style>
-  		#main {
-			box-shadow: 0 0 10px 5px grey;
-			background-color: transparent;
-  			width:500px;
-  			margin: 110px auto;
-			line-height: 40px;
-			text-align: center;
-  			padding: 5px;
-  			border-radius: 5px;
-  			border:2px;
-  		}
-		.a{
-			background: url("lightpattern.png");
-			background-size: cover;
-			background-position: center;
-			font-family: sans-serif;
-		}
-  		.iublogo {
-  			width: 200px;
-  			text-align: center;
-  			border-radius: 50%;
-  		}
-  		.my_form {
-  			width: 450px;
-  			margin: 0 auto;
-
-
-  		}
-  		.inputevalues{
-  			width: 430px;
-  			margin: 0 auto;
-  			padding: 5px;
-
-  		}
-		.login_btn:hover {
-			background-color: black;
-			color: white;
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vykon Login</title>
+  <link href="https://fonts.googleapis.com/css?family=Karla:400,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.materialdesignicons.com/4.8.95/css/materialdesignicons.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/css/login.css">
+<style>
+.logo{
+  text-align: left;
 }
-  		.login_btn{
-  			margin-top: 10px;
-  			background: grey;
-			color: #fff;
-			padding: 5px;	
-  			width: 100px;
-  			text-align: center;
-  			font-size: 18px;
-  			font-weight: bold;
-  			margin-bottom: 20px;
-			border-radius: 20px;
-  		}
-  		.register_btn{
-  			margin-top: 20px;
-  			background-color: #3498db;
-  			padding: 5px;
-  			color: white;
-  			width: 100px;
-  			text-align: center;
-  			font-size: 18px;
-  			font-weight: bold;
-  		}
-  		.group_selection{
-  			margin-top: 20px;
-  			padding:2px;
-  		}
-  		.selection{
-  			margin-top: 20px;
-  			background-color: white;
-  		}
-		.lol{
-			margin-left: -373px;
-		}
-		.lmao{
-			margin-left: -390px;
-		}
-		.header {
-  			padding: 20px;
-			text-align: center;
-			color: black;
-			font-size: 25px;
-		}
-	
-
-	</style>
-
+.brand-wrapper .logo {
+    height: 50px;
+    margin-left: 0px;
+    text-align: left;
+}
+.he{
+  font-family: Impact, 'Arial Narrow Bold', sans-serif;
+  font-size: 50px;
+  font-style: bold;
+}
+.vert {
+	font-style: bold;	
+}
+</style>
 </head>
-		<div class="header">
-  		<h1>VYKON</h1>
-		</div>
-<body class = "a" >
-    
-	
+<body>
+  <main class="d-flex align-items-center min-vh-100 py-3 py-md-0">
+    <div class="container">
+      <div class="card login-card">
+        <div class="row no-gutters">
+          <div class="col-md-5">
+            
+            <!--insert your image here-->
+            <img src="assets/images/login.jpg" alt="login" class="login-card-img">
+            <!--insert your image here-->
+			
+          </div>
+          <div class="col-md-7">
+            <div class="card-body">
+              <div class="brand-wrapper">
 
-	<div id="main">
-	 <center>
-       <h2>Sign In</h2>
-       <img src="iub_logo.png" class="iublogo">
-     </enter>
+			<div class="he">V Y K O N</div>
+			<div class="vert">Independent University, Bangladesh</div>
 
-      <form class="my_form" action="index.php"  method="post">
-       	<div class = "lmao">
-		   <label>User ID</label><br>
-		   </div>
-         <input type="text" class="inputevalues" name="id" id="id" placeholder="Enter Username"><br>
-		 <div class = "lol">
-         <label>Password</label><br>
-		 </div>
-         <input type="password" class="inputevalues" name="password" id="password" placeholder="Type Your Password"><br>
-	
-
-          <input type="submit" class="login_btn" name="login" id="login" value="Login"><br>
-
-       </form>
-	 </center>
-
-	 
-	</div>
-	
-   
-	</body>
+              </div>
+              <p class="login-card-description">Sign into Vykon OBES</p>
+              <form class="my_form" action="index.php"  method="post">
+                  <div class="form-group">
+                    <label for="email" class="sr-only">Email</label>
+                    <input type="text" name="id" id="id" class="form-control" placeholder="User ID">
+                  </div>
+                  <div class="form-group mb-4">
+                    <label for="password" class="sr-only">Password</label>
+                    <input type="password" name="password" id="password" class="form-control"class="error" placeholder="***********">
+                  </div>
+                  <input name="login" id="login" class="btn btn-block login-btn mb-4" type="submit" value="Login">
+                </form>
+                <a href="#!" class="forgot-password-link">Forgot password?</a>
+                <p class="login-card-footer-text">Don't have an account? <a href="#!" class="text-reset">Register here</a></p>
+                <nav class="login-card-footer-nav">
+                  <a href="#!">A T M J M S M</a>
+                  <a href="#!"> | VYKON Database 303 SEC3 GROUP 6</a>
+                </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</body>
 </html>
-
