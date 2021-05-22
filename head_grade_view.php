@@ -106,8 +106,7 @@
 
 			?> 
 		</select>
-		<br>
-        <br>
+		
 		<td><input type = "submit" name = "submit" value = "View"></td>
 	
         <br>
