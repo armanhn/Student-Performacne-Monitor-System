@@ -135,7 +135,7 @@
 
 <div class="plowise">
 
-<div><b>STUDENT WISE CHART</b> </div><br>
+<div><b>STUDENT WISE BAR CHART</b> </div><br>
 
         <form action ="student_wise_chart.php" method = "post">
 		<th>Enter Student ID</th>
