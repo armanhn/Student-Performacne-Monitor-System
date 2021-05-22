@@ -38,7 +38,7 @@
                 color:black;
                 font-size: 16px;" 
                 
-                formaction="dept_head_dash.php.php" >HOME</button>
+                formaction="dept_head_dash.php" >HOME</button>
               </form>
             <!-- LOGOUT BUTTN-->
             <form>
