@@ -1,6 +1,9 @@
 <?php
 	include "connection.php";
-	session_start();
+	//session_start();
+	
+	
+
 	$grand_total=0; // Total count of plo achieved
 	for($k=1;$k<=13;$k++) /// loop will run all the 13 plo
 	{
@@ -50,7 +53,7 @@
 	 			 			{
 	 			 		$sql2 = "SELECT SUM(CASE WHEN $CLO IS NOT NULL THEN 1 ELSE 0 END) AS ccount
 						FROM grade_sheet AS g, plo_table AS p
-						WHERE g.serial_id = p.serial_id AND g.$CLO = 'Y' AND p.$plo = '$ploValue'";
+						WHERE g.serial_id = p.serial_id  AND g.$CLO = 'Y' AND p.$plo = '$ploValue'";
 
 			            $result2 = mysqli_query($conn,$sql2);
 

@@ -113,7 +113,7 @@
 
                                                 <th><label>Enter Course ID</label></th>
                                               
-                                                <select name = "section_name">
+                                                <select name = "section_name"> 
                                                 <?php
 
                                                 $sql= "SELECT section_name FROM section WHERE faculty_id = '$id' ";

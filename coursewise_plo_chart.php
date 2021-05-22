@@ -13,16 +13,14 @@ if(isset($_POST['submit']))
 	for($k=1;$k<=13;$k++) /// loop will run all the 13 plo
 	{
 		$plo = "plo".$k;  // converting plo into plo1-plo13.
-		
-	 	
+
 	 	$sql =	"SELECT DISTINCT $plo FROM plo_table"; /// selecting all the rows of a certain plo
 
 	 	$result = mysqli_query($conn,$sql);
 		 
 		if(mysqli_num_rows($result)>0)
 		{
-		 	
-		 	
+ 	
 		 	$count= 0;
 		 	$i=0;
 		 	while($row = mysqli_fetch_assoc($result))
@@ -40,7 +38,6 @@ if(isset($_POST['submit']))
 		 	}
 
 		}
-
 
 				 $add = 0;
 
@@ -65,27 +62,17 @@ if(isset($_POST['submit']))
 					    $row2 = mysqli_fetch_assoc($result2);
 
 					    $value = $row2['ccount'];
-					    //echo $value;
-					   //echo "<br>";
+		
 					    $add += $value; // storing the data in a variable
 	 			 			}	
 
-
-
 	 				}
 	 			}
-	 			
-
-	 		//echo $plo." TOTAL = ";
-	 		//echo $add."<br>";/// prinitng the summation of total achieved plo
+			
 	 		$grand_total += $add; 
 	 		$plowise[$k] =$add; /// storing the data in array for future use
 	}
-	 		//echo "<br>";
-	 		//echo"<hr>";
-	 	 	//echo"TOTAL = ";
-	 		//echo $grand_total;
-	 		//echo"<br>";
+
 
 
 $datay=array($plowise[1],$plowise[2],$plowise[3],$plowise[4],$plowise[5],$plowise[6],$plowise[7],$plowise[8],$plowise[9],$plowise[10],$plowise[11],$plowise[12],$plowise[13]);

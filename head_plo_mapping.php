@@ -1,4 +1,4 @@
-<?php
+<?phps
 
 	include "connection.php";
 	   session_start();
@@ -444,7 +444,8 @@
 			{
 				$plo13 = $_POST['plo13'];
 				$m = implode(',',$plo13);
-				$m = "'".$m."'";
+				$m = "'".$m."'"; 
+
 			}
 			else{
 				$m = 'NULL';
