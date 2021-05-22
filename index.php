@@ -79,9 +79,9 @@
 	
   font-size:20px;
   color:#ff414d;
-  margin-left:85px;
+  margin-left:75px;
   font-style: bold;
-  font-family:impact;
+  font-family:arial;
 
 }
 .vert{
