@@ -1,9 +1,9 @@
 <?php
 include "connection.php";
 session_start();
-require_once ('D:/XAMPP/htdocs/jpgraph-4.3.4/jpgraph-4.3.4/src/jpgraph.php');
-require_once ('D:/XAMPP/htdocs/jpgraph-4.3.4/jpgraph-4.3.4/src/jpgraph_log.php');
-require_once ('D:/XAMPP/htdocs/jpgraph-4.3.4/jpgraph-4.3.4/src/jpgraph_radar.php');
+require_once ('D:/Courses/CSE303-Database/XAMPP/htdocs/jpgraph-4.3.4 (1)/jpgraph-4.3.4/src/jpgraph.php');
+require_once ('D:/Courses/CSE303-Database/XAMPP/htdocs/jpgraph-4.3.4 (1)/jpgraph-4.3.4/src/jpgraph_log.php');
+require_once ('D:/Courses/CSE303-Database/XAMPP/htdocs/jpgraph-4.3.4 (1)/jpgraph-4.3.4/src/jpgraph_radar.php');
 
    
     $id = $_SESSION['id'];
@@ -155,21 +155,15 @@ require_once ('D:/XAMPP/htdocs/jpgraph-4.3.4/jpgraph-4.3.4/src/jpgraph_radar.php
     
     
 
-
-
-
- 
-
- 
 // Create the basic rtadar graph
-$graph = new RadarGraph(800,600);
+$graph = new RadarGraph(760,400);
  
 // Set background color and shadow
 $graph->SetColor("white");
-$graph->SetShadow();
+//$graph->SetShadow();
  
 // Position the graph
-$graph->SetCenter(0.4,0.55);
+$graph->SetCenter(0.5,0.5);
  
 // Setup the axis formatting     
 $graph->axis->SetFont(FF_FONT1,FS_BOLD);
@@ -190,7 +184,7 @@ $plot = new RadarPlot(array($plowise2[1],$plowise2[2],$plowise2[3],$plowise2[4],
 $plot->SetLegend("Goal");
 $plot->SetColor("red","lightred");
 $plot->SetFill(false);
-$plot->SetLineWeight(2);
+$plot->SetLineWeight(4);
  
 // Create the second radar plot
 $plot2 = new RadarPlot(array($plowise[1],$plowise[2],$plowise[3],$plowise[4],$plowise[5],$plowise[6],$plowise[7],$plowise[8],$plowise[9],$plowise[10],$plowise[11],$plowise[12],$plowise[13]));

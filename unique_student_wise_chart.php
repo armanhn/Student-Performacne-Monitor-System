@@ -1,12 +1,9 @@
 <?php
 include "connection.php";
 session_start();
-require_once ('D:/XAMPP/htdocs/jpgraph-4.3.4/jpgraph-4.3.4/src/jpgraph.php');
-require_once ('D:/XAMPP/htdocs/jpgraph-4.3.4/jpgraph-4.3.4/src/jpgraph_bar.php');
+require_once ('D:/Courses/CSE303-Database/XAMPP/htdocs/jpgraph-4.3.4 (1)/jpgraph-4.3.4/src/jpgraph.php');
+require_once ('D:/Courses/CSE303-Database/XAMPP/htdocs/jpgraph-4.3.4 (1)/jpgraph-4.3.4/src/jpgraph_bar.php');
 
-
-
-	
 	$id = $_SESSION['id'];
 
 	$grand_total=0; // Total count of plo achieved
@@ -41,7 +38,6 @@ require_once ('D:/XAMPP/htdocs/jpgraph-4.3.4/jpgraph-4.3.4/src/jpgraph_bar.php')
 
 		}
 
-
 				 $add = 0;
 
 	 			for($i=0;$i<$count;$i++)  // loop will run till the number of rows collected from plo
@@ -70,8 +66,6 @@ require_once ('D:/XAMPP/htdocs/jpgraph-4.3.4/jpgraph-4.3.4/src/jpgraph_bar.php')
 					    $add += $value; // storing the data in a variable
 	 			 			}	
 
-
-
 	 				}
 	 			}
 	 			
@@ -87,11 +81,10 @@ require_once ('D:/XAMPP/htdocs/jpgraph-4.3.4/jpgraph-4.3.4/src/jpgraph_bar.php')
 	 		//echo $grand_total;
 	 		//echo"<br>";
 
-
 $datay=array($plowise[1],$plowise[2],$plowise[3],$plowise[4],$plowise[5],$plowise[6],$plowise[7],$plowise[8],$plowise[9],$plowise[10],$plowise[11],$plowise[12],$plowise[13]);
  
 // Create the graph. These two calls are always required
-$graph = new Graph(800,600);
+$graph = new Graph(750,400);
 $graph->SetScale('textlin');
  
 // Add a drop shadow
@@ -118,7 +111,5 @@ $graph->xaxis->title->SetFont(FF_FONT1,FS_BOLD);
  
 // Display the graph
 $graph->Stroke();
-
-
 
 ?>
