@@ -1,53 +1,84 @@
 <?php
+	include "connection.php"
+	//session_start();
 
-	include "connection.php";
-	session_start();
-	// $id = $_SESSION['id'];
+	//$id= $_SESSION['id'];
+
 ?>
+
+
 
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Assesment</title>
+    <title>File Upload</title>
 </head>
 <body>
-	<form action = "" method = "post">
+ 
+<form action = "" method="post" enctype="multipart/form-data">
 
-	<th>Attach Assesment Plan</th>
-	<td><input type = "file" name = "pdf" ></td>
-	<br>
+		<th>Enter Course ID</th>
+		<select name = "section_name" >
+			<?php
 
-	<br>
-	<td><input type = "submit" name = "submit" value="upload"></td>
+				$sql= "SELECT section_name FROM section WHERE faculty_id = '4315'";
+				$result = mysqli_query($conn,$sql);
 
-		<?php
+				while($rows =  mysqli_fetch_assoc($result))
+				{
+					$section_name = $rows['section_name']; 
+					echo "<option value= '$section_name'>$section_name</option>"; 
+				}
 
+			?> 
+		</select>
+		<br>
+        
+ 
+ <input type="file" name="file[]" id="file" multiple>
+ <input type='submit' name='submit' value='Upload'>
 
+</form>
+<?php 
 
-        if (isset($_POST['submit'])) {
+if(isset($_POST['submit'])){
+ 
+ // Count total files
+ $countfiles = count($_FILES['file']['name']);
 
-
-        if (isset($_POST['submit'])) {
-          $pdf=$_FILES['pdf']['name'];
-          $pdf_type=$_FILES['pdf']['type'];
-          $pdf_size=$_FILES['pdf']['size'];
-          $pdf_tem_loc=$_FILES['pdf']['tmp_name'];
-          $pdf_store="pdf/".$pdf;
-
-          move_uploaded_file($pdf_tem_loc,$pdf_store);
-
-          $sql="INSERT INTO assessment (assessment_plan) values('$pdf')";
-          $query=mysqli_query($conn,$sql);
-
-
-
-        }
-
-        }
-
-
-
-         ?>
-
-</body>
-</html>
+ // Looping all files
+ for($i=0;$i<$countfiles;$i++){
+  $filename = $_FILES['file']['name'][$i];
+ 
+  // Upload file
+  move_uploaded_file($_FILES['file']['tmp_name'][$i],'img/'.$filename);
+ if($i==0)
+ {
+    $sql = "INSERT into assessment(section_name,assessment_plan) VALUES('$section_name','$filename')";
+    if (mysqli_query($conn,$sql)){
+        echo "File Sucessfully uploaded";
+    }else{
+        echo "Error";
+    }
+ }
+ else if($i==1)
+ {
+    $sql = "INSERT into assessment(section_name,question_bank) VALUES('$section_name','$filename')";
+    if (mysqli_query($conn,$sql)){
+        echo "File Sucessfully uploaded";
+    }else{
+        echo "Error";
+    }
+ }
+ else if($i==2)
+ {
+    $sql = "INSERT into assessment(section_name,marks_obtained) VALUES('$section_name','$filename')";
+    if (mysqli_query($conn,$sql)){
+        echo "File Sucessfully uploaded";
+    }else{
+        echo "Error";
+    }
+ }
+ }
+} 
+?>

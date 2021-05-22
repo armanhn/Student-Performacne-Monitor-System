@@ -42,34 +42,34 @@ include "connection.php";
  
 if (isset($_POST["submit"]))
  {
-     #retrieve file title
+     
         
      
-    #file name with a random number so that similar dont get replaced
+    
      $pname1 = rand(1000,10000)."-".$_FILES["file1"]["name"];
      
      
  
-    #temporary file name to store file
+    
     $tname1 = $_FILES["file1"]["tmp_name"];
     
    
-     #upload directory path
+     
 	$uploads_dir1 = 'img';
-    #TO move the uploaded file to specific location
+
     move_uploaded_file($tname1, $uploads_dir1.'/'.$pname1);
 
     $pname3 = rand(1000,10000)."-".$_FILES["file3"]["name"];
      
      
  
-    #temporary file name to store file
+   
     $tname3 = $_FILES["file3"]["tmp_name"];
     
    
-     #upload directory path
+     
 	$uploads_dir3 = 'img';
-    #TO move the uploaded file to specific location
+    
     move_uploaded_file($tname3, $uploads_dir3.'/'.$pname3);
  	
  	$pname2 = rand(1000,10000)."-".$_FILES["file2"]["name"];
@@ -80,11 +80,11 @@ if (isset($_POST["submit"]))
     $tname2 = $_FILES["file2"]["tmp_name"];
     
    
-     #upload directory path
+     
 	$uploads_dir2 = 'img';
-    #TO move the uploaded file to specific location
+    
     move_uploaded_file($tname2, $uploads_dir2.'/'.$pname2);
-    #sql query to insert into database
+    
     
     if(!empty($pname1))
     {
