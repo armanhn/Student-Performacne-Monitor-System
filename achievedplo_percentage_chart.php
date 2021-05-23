@@ -1,6 +1,6 @@
 <?php // content="text/plain; charset=utf-8"
-require_once ('D:/XAMPP/htdocs/jpgraph-4.3.4/jpgraph-4.3.4/src/jpgraph.php');
-require_once ('D:/XAMPP/htdocs/jpgraph-4.3.4/jpgraph-4.3.4/src/jpgraph_pie.php');
+require_once ('D:/xampp/htdocs/jpgraph-4.3.4/jpgraph-4.3.4/src/jpgraph.php');
+require_once ('D:/xampp/htdocs/jpgraph-4.3.4/jpgraph-4.3.4/src/jpgraph_pie.php');
  include "connection.php";
 session_start();
  

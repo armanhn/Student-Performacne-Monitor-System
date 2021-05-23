@@ -28,7 +28,7 @@
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
-            <a class="navbar-brand" href="dept_head_dash.php">VYKON DASHVIEW</a>
+            <a class="navbar-brand" href="facultydash.php">VYKON DASHVIEW</a>
 
             <form>
                 <button class="btn" style="border: none;
@@ -38,7 +38,7 @@
                 color:black;
                 font-size: 16px;" 
                 
-                formaction="dept_head_dash.php" >HOME</button>
+                formaction="facultydash.php" >HOME</button>
               </form>
             <!-- LOGOUT BUTTN-->
             <form>
@@ -68,7 +68,7 @@
                     <div class="container-fluid">
                         <h1 class="mt-4">ASSESSMENT</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="dept_head_dash.php">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="facultydash.php">Dashboard</a></li>
                             <li class="breadcrumb-item active">ASSESSMENT</li>
                         </ol>
                         <div class="card mb-4">
@@ -122,6 +122,7 @@
       }else{
           echo "Error";
       }
+   
   } 
   ?>
     
