@@ -113,19 +113,6 @@
 		<td><input type = "submit" name = "submit" value ="View" ></td>
 </div>
 <br>
-<!----div class="plowise">
-<div><b>STUDENT WISE CHART</b> </div><br>
-
-<form action = "student_wise_chart.php" method = "post">
-		<th>Enter Student ID</th>
-		<td><input type = "text" name = "id" ></td>
-		<br>
-		<td><input type = "submit" name = "submit" value= "View" ></td>
-		<br>
-
-</div>
-<br>
-</body>--->
                                  
                                 </table>
                                 </div>
