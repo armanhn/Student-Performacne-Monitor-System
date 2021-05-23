@@ -1,5 +1,4 @@
 
-
 <?php
 	
 	include "connection.php";
@@ -79,7 +78,7 @@
 	
   font-size:20px;
   color:#ff414d;
-  margin-left:75px;
+  margin-left:60px;
   font-style: bold;
   font-family:arial;
 
@@ -129,10 +128,8 @@
                 </form>
                 <a href="#!" class="forgot-password-link">Forgot password?</a>
                
-                
-                <p class="login-card-footer-text">Don't have an account? <a href="#!" class="text-reset"></a></p>
                 <nav class="login-card-footer-nav">
-                  <a href="#!">A T M J M S M</a>
+                  <a href="#!">Our initials A T M J M S M</a>
                   <a href="#!"> | VYKON Database 303 SEC3 GROUP 6</a> 
                  
                 </nav>
